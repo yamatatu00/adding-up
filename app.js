@@ -78,11 +78,12 @@ rl.on('close', () => {
     //前者の引数 pair1 を 後者の引数 pair2 より前にしたいときは、負の整数、
     // pair2 を pair1 より前にしたいときは、正の整数、
     // pair1 と pair2 の並びをそのままにしたいときは、 0 を返す必要があります
-    return pair2[1].change - pair1[1].change;
+    // return pair2[1].change - pair1[1].change;
+    return pair1[1].change - pair2[1].change;
   });
   console.log(rankingArray);
-  const rankingStrings = rankingArray.map(([key, value]) => {
-    return key + ': ' + value.popu10 + '=>' + value.popu15 + ' 変化率:' + value.change;
+  const rankingStrings = rankingArray.map(([key, value], i) => {
+    return i+1 + '位' + key + ': ' + value.popu10 + '=>' + value.popu15 + ' 変化率:' + value.change;
   });
   console.log(rankingStrings);
 });
